@@ -32,26 +32,26 @@ export function UserList() {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8000/users?_expand=role").then(res => {
+        axios.get("/users?_expand=role").then(res => {
             setUsersByRoleType(res.data);
         })
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/regions").then(res => {
+        axios.get("/regions").then(res => {
             setRegions(res.data)
         })
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/roles").then(res => {
+        axios.get("/roles").then(res => {
             setRoles(res.data);
         })
     }, [])
 
     function deleteItem(item) {
         setUsers(users.filter(user => user.id !== item.id))
-        axios.delete(`http://localhost:8000/users/${item.id}`)
+        axios.delete(`/users/${item.id}`)
     }
 
     function showConfirm(item) {
@@ -78,7 +78,7 @@ export function UserList() {
     const switchRoleStatus = (user) => {
         user.roleState = !user.roleState;
         setUsers([...users])
-        axios.patch(`http://localhost:8000/users/${user.id}`, {
+        axios.patch(`/users/${user.id}`, {
             roleState: user.roleState
         })
     };
@@ -149,7 +149,7 @@ export function UserList() {
         addUserForm.current.validateFields().then(value => {
             setAddModalOpen(false)
             addUserForm.current.resetFields();
-            axios.post("http://localhost:8000/users", {
+            axios.post("/users", {
                 ...value,
                 "default": false,
                 "roleState": true
@@ -168,8 +168,8 @@ export function UserList() {
     const updateFormOk = () => {
         updateUserForm.current.validateFields().then(value => {
             console.log(value);
-            axios.patch(`http://localhost:8000/users/${currentUserId}`, value).then(res => {
-                axios.get("http://localhost:8000/users?_expand=role").then(res => {
+            axios.patch(`/users/${currentUserId}`, value).then(res => {
+                axios.get("/users?_expand=role").then(res => {
                     setUsersByRoleType(res.data)
                 })
             })

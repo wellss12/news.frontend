@@ -21,7 +21,7 @@ export default function NewsPreview(props) {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/news/${id}?_expand=category`).then(res => {
+        axios.get(`/news/${id}?_expand=category`).then(res => {
             setNewsInfo(res.data);
         })
     }, []);

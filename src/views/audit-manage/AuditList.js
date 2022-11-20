@@ -8,7 +8,7 @@ export default function AuditList(props) {
     const [newsList, setNewsList] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        axios(`http://localhost:8000/news?author=${username}&auditState_ne=0&publishState_lte=1&_expand=category`)
+        axios(`/news?author=${username}&auditState_ne=0&publishState_lte=1&_expand=category`)
             .then(res => {
                 setNewsList(res.data)
             })
@@ -27,7 +27,7 @@ export default function AuditList(props) {
     }
 
     const revertNews = (newsId) => {
-        axios.patch(`http://localhost:8000/news/${newsId}`, {
+        axios.patch(`/news/${newsId}`, {
             auditState: 0
         }).then(res => {
             setNewsList(newsList.filter(news => news.id !== newsId))
@@ -40,7 +40,7 @@ export default function AuditList(props) {
     };
 
     const publishNews = (newsId) => {
-        axios.patch(`http://localhost:8000/news/${newsId}`, {
+        axios.patch(`/news/${newsId}`, {
             publishState: 2,
             publishTime: Date.now()
         }).then(res => {

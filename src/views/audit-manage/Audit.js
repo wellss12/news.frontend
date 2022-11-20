@@ -6,7 +6,7 @@ import axios from "axios";
 export default function Audit(props) {
     const [newsList, setNewsList] = useState([]);
     useEffect(() => {
-        axios(`http://localhost:8000/news?auditState=1&_expand=category`).then(res => {
+        axios(`/news?auditState=1&_expand=category`).then(res => {
             setNewsByRoleType(res.data)
         })
     });
@@ -25,7 +25,7 @@ export default function Audit(props) {
     };
 
     const approveNews = newsId => {
-        axios.patch(`http://localhost:8000/news/${newsId}`, {
+        axios.patch(`/news/${newsId}`, {
             //已通過
             auditState: 2,
             //待發佈
@@ -41,7 +41,7 @@ export default function Audit(props) {
     };
 
     const rejectNews = newsId => {
-        axios.patch(`http://localhost:8000/news/${newsId}`, {
+        axios.patch(`/news/${newsId}`, {
             //未通過
             auditState: 3,
             //未發佈

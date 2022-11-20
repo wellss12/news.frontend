@@ -1,6 +1,7 @@
 import {HashRouter} from 'react-router-dom'
 import './App.css';
 import IndexRouter from "./routers/IndexRouter";
+import './utils/http'
 
 function App() {
     return (

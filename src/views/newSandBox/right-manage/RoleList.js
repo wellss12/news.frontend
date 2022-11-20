@@ -13,13 +13,13 @@ export function RoleList() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/roles`).then(res => {
+        axios.get(`/roles`).then(res => {
             setRoles(res.data);
         })
     }, [])
     
     useEffect(()=>{
-       axios.get(`http://localhost:8000/rights?_embed=children`) .then(res=>{
+       axios.get(`/rights?_embed=children`) .then(res=>{
            setRights(res.data)
        })
     },[])
@@ -78,7 +78,7 @@ export function RoleList() {
             return role;
         }))   
         
-        axios.patch(`http://localhost:8000/roles/${currentRoleId}`,{
+        axios.patch(`/roles/${currentRoleId}`,{
             rights:currentRights
         })
     }

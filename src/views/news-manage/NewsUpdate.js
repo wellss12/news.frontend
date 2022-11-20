@@ -38,7 +38,7 @@ export default function NewsUpdate(props) {
     const {id} = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/news/${id}?_expand=category`).then(res => {
+        axios.get(`/news/${id}?_expand=category`).then(res => {
             let {title, categoryId, content} = res.data;
             NewsForm.current.setFieldsValue({
                 title,
@@ -49,13 +49,13 @@ export default function NewsUpdate(props) {
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/categories").then(res => {
+        axios.get("/categories").then(res => {
             setCategories(res.data)
         })
     }, [])
 
     const handleSave = (auditState) => {
-        axios.patch(`http://localhost:8000/news/${id}`, {
+        axios.patch(`/news/${id}`, {
             ...newsFormInfo,
             "content": newsContent,
             "auditState": auditState,

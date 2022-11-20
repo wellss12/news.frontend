@@ -55,14 +55,14 @@ export default function NewsDraft(props) {
     ];
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/news?author=${user.username}&&auditState=${0}&&_expand=category`)
+        axios.get(`/news?author=${user.username}&&auditState=${0}&&_expand=category`)
             .then(res => {
                 setNewsList(res.data)
             })
     }, [])
 
     const submitForReview = (newsId) => {
-        axios.patch(`http://localhost:8000/news/${newsId}`, {
+        axios.patch(`/news/${newsId}`, {
             auditState: 1
         }).then(res =>{
             navigate(`/audit-manage/list`);
@@ -75,7 +75,7 @@ export default function NewsDraft(props) {
     };
 
     const deleteItem = newsId => {
-        axios.delete(`http://localhost:8000/news/${newsId}`).then(res => {
+        axios.delete(`/news/${newsId}`).then(res => {
             setNewsList(newsList.filter(news => news.id !== newsId))
         })
     };

@@ -39,7 +39,7 @@ export default function NewsAdd(props) {
     const NewsForm = useRef();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/categories").then(res => {
+        axios.get("/categories").then(res => {
             setCategories(res.data)
         })
     }, [])
@@ -47,7 +47,7 @@ export default function NewsAdd(props) {
     const handleSave = (auditState) => {
         const user = JSON.parse(localStorage.getItem("token"));
         let now = Date.now();
-        axios.post(`http://localhost:8000/news`, {
+        axios.post(`/news`, {
             ...newsFormInfo,
             "content": newsContent,
             "region": user.region ? user.region : "全球",

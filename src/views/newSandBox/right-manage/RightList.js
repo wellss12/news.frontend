@@ -8,7 +8,7 @@ const {confirm} = Modal;
 export function RightList() {
     const [rights, setRights] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/rights?_embed=children").then(res => {
+        axios.get("/rights?_embed=children").then(res => {
             res.data.forEach(item => {
                 if (item.children.length === 0) {
                     item.children = null;
@@ -50,11 +50,11 @@ export function RightList() {
         setRights([...rights]);
 
         if (item.grade === 1) {
-            axios.patch(`http://localhost:8000/rights/${item.id}`, {
+            axios.patch(`/rights/${item.id}`, {
                 pagepermission: item.pagepermission
             })
         } else {
-            axios.patch(`http://localhost:8000/children/${item.id}`, {
+            axios.patch(`/children/${item.id}`, {
                 pagepermission: item.pagepermission
             })
         }

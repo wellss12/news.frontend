@@ -20,7 +20,7 @@ export function Login() {
     const navigate = useNavigate();
 
     const onFinish = (values) => {
-        axios.get(`http://localhost:8000/users?username=${values.username}&password=${values.password}&roleState=true&_expand=role`)
+        axios.get(`/users?username=${values.username}&password=${values.password}&roleState=true&_expand=role`)
             .then(res => {
                 if (res.data.length !== 1) {
                     message.error("帳號或密碼錯誤")
