@@ -18,10 +18,7 @@ export function UserList() {
     const updateUserForm = useRef();
 
     const setUsersByRoleType = usersFromApi => {
-        const {
-            role: {roleType},
-            region
-        } = JSON.parse(localStorage.getItem("token"));
+        const {role: {roleType}, region} = JSON.parse(localStorage.getItem("token"));
         const roleTypeMap = {
             1: "superAdmin",
             2: "admin",

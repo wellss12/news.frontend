@@ -16,7 +16,7 @@ export default function NewsPreview(props) {
     const publishStateMap = {
         0: "未發佈",
         1: "待發佈",
-        2: "已上線",
+        2: "已發佈",
         3: "已下線"
     };
 
