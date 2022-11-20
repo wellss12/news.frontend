@@ -1,0 +1,19 @@
+﻿.formContainer {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 300px;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    /*把基準點移到物件的中心*/
+    transform: translate(-50%,-50%);
+    padding: 20px;
+}
+
+.formTitle{
+    font-size: 32px;
+    color:white;
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+}
