@@ -54,7 +54,7 @@ export default function AuditList(props) {
     };
 
     const updateNews = (newId) => {
-        navigate(`/news-manage/preview/${newId}`)
+        navigate(`/news-manage/update/${newId}`)
     };
 
     const columns = [
@@ -88,7 +88,8 @@ export default function AuditList(props) {
                         news.auditState === 2 && <Button danger onClick={() => publishNews(news.id)}>發佈</Button>
                     }
                     {
-                        news.auditState === 3 && <Button type="primary" onClick={() => updateNews(news.id)}>更新</Button>
+                        news.auditState === 3 &&
+                        <Button type="primary" onClick={() => updateNews(news.id)}>更新</Button>
                     }
                 </div>
 
