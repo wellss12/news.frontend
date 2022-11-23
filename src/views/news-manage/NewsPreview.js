@@ -20,6 +20,14 @@ export default function NewsPreview(props) {
         3: "已下線"
     };
 
+    const stateColorMap = {
+        0: "",
+        1: "orange",
+        2: "green",
+        3: "red"
+    }
+
+
     useEffect(() => {
         axios.get(`/news/${id}?_expand=category`).then(res => {
             setNewsInfo(res.data);
@@ -43,10 +51,10 @@ export default function NewsPreview(props) {
                         {newsInfo.publishTime ? newsInfo.publishTime : '-'}
                     </Descriptions.Item>
                     <Descriptions.Item label="區域">{newsInfo.region}</Descriptions.Item>
-                    <Descriptions.Item label="審核狀態" contentStyle={{color: "red"}}>
+                    <Descriptions.Item label="審核狀態" contentStyle={{color: stateColorMap[newsInfo.auditState]}}>
                         {auditStateMap[newsInfo.auditState]}
                     </Descriptions.Item>
-                    <Descriptions.Item label="發佈狀態" contentStyle={{color: "red"}}>
+                    <Descriptions.Item label="發佈狀態" contentStyle={{color: stateColorMap[newsInfo.publishState]}}>
                         {publishStateMap[newsInfo.publishState]}
                     </Descriptions.Item>
                     <Descriptions.Item label="訪問數量">{newsInfo.view}</Descriptions.Item>
