@@ -9,7 +9,7 @@ export default function Published(props) {
         axios(`/news?author=${username}&publishState=2&_expand=category`).then(res => {
             setNewsList(res.data)
         })
-    })
+    },[])
     return (
         <div>
             <NewsPublish newsList={newsList}/>
