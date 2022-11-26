@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import {SideMenu} from "../../components/newSandBox/SideMenu";
-import {TopHeader} from "../../components/newSandBox/TopHeader";
+import TopHeader from "../../components/newSandBox/TopHeader";
 import {Outlet} from "react-router-dom";
 import {Layout} from 'antd';
 import "./NewSandBox.css"

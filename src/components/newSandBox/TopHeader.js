@@ -4,11 +4,12 @@ import {
     MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined
 } from '@ant-design/icons';
 import {useNavigate} from "react-router-dom";
+import {connect} from "react-redux";
 
 const {Header} = Layout;
 
-
-export function TopHeader() {
+function TopHeader(props) {
+    console.log(props);
     const navigate = useNavigate();
     const {role: {roleName}, username} = JSON.parse(localStorage.getItem("token"));
     const menu = (<Menu
@@ -39,7 +40,7 @@ export function TopHeader() {
         {collapsed ? <MenuUnfoldOutlined onClick={ChangeCollapsed}/> : <MenuFoldOutlined onClick={ChangeCollapsed}/>}
         <div style={{float: "right"}}>
             <span>
-                歡迎 <span style={{color:"#1890ff"}}>{username}</span>回來
+                歡迎 <span style={{color: "#1890ff"}}>{username}</span>回來
             </span>
             <Dropdown overlay={menu}>
                 <Avatar size="large" icon={<UserOutlined/>}/>
@@ -47,3 +48,13 @@ export function TopHeader() {
         </div>
     </Header>
 }
+
+const mapStateToProps = ({CollapsedReducer: {isCollapsed}}) => {
+    return {
+        isCollapsed
+    }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps)(TopHeader)
