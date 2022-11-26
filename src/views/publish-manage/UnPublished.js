@@ -1,16 +1,9 @@
-﻿import React, {useEffect, useState} from "react";
-import axios from "axios";
+﻿import React from "react";
 import NewsPublish from "../../components/publish-manage/NewsPublish";
+import useNews from "../../components/publish-manage/useNews";
 
 export default function UnPublished() {
-    const [newsList, setNewsList] = useState([]);
-    const {username} = JSON.parse(localStorage.getItem("token"));
-    useEffect(() => {
-        axios.get(`/news?author=${username}&publishState=1&_expand=category`).then(res => {
-            setNewsList(res.data);
-        })
-    }, [])
-
+    const {newsList} = useNews(1);
 
     return <div>
         <NewsPublish newsList={newsList}></NewsPublish>
