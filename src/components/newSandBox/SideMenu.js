@@ -6,6 +6,7 @@ import "./SideMenu.css"
 import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useMemo, useState} from "react";
 import axios from "axios";
+import {connect} from "react-redux";
 
 const {Sider} = Layout;
 const iconList = {
@@ -15,7 +16,7 @@ const iconList = {
     "/right-manage/right/list": <UserOutlined/>,
 }
 
-export function SideMenu() {
+function SideMenu(props) {
     const [menuList, setMenuList] = useState([]);
     useEffect(() => {
         axios.get("/rights?_embed=children").then(res => {
@@ -33,7 +34,7 @@ export function SideMenu() {
         return menu.children?.length === 0;
 
     }
-    
+
     const rights = JSON.parse(localStorage.getItem("token")).role.rights;
     const includePagePermissionMenu = useMemo(() => {
         console.log(menuList);
@@ -54,7 +55,7 @@ export function SideMenu() {
     const openKeys = '/' + selectedKeys.split('/')[1];
 
     //default開頭的是非受控 => 狀態只有第一個會修改,所以輸入/,會先更新為/,最後重定向到home時,不會再改變
-    return <Sider trigger={null} collapsible collapsed={false}>
+    return <Sider trigger={null} collapsible collapsed={props.isCollapsed}>
         <div style={{display: "flex", height: "100%", flexDirection: "column"}}>
             <div className="logo">全球新聞發布管理系統</div>
             <div style={{flex: 2, overflow: "auto"}}>
@@ -70,3 +71,11 @@ export function SideMenu() {
         </div>
     </Sider>
 }
+
+const mapStateToProps = ({CollapsedReducer: {isCollapsed}}) => {
+    return {
+        isCollapsed
+    }
+}
+
+export default connect(mapStateToProps)(SideMenu)

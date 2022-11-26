@@ -1,5 +1,5 @@
 ﻿import {Avatar, Dropdown, Layout, Menu} from 'antd';
-import React, {useState} from "react";
+import React from "react";
 import {
     MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined
 } from '@ant-design/icons';
@@ -9,7 +9,6 @@ import {connect} from "react-redux";
 const {Header} = Layout;
 
 function TopHeader(props) {
-    console.log(props);
     const navigate = useNavigate();
     const {role: {roleName}, username} = JSON.parse(localStorage.getItem("token"));
     const menu = (<Menu
@@ -28,16 +27,16 @@ function TopHeader(props) {
     />);
 
     const ChangeCollapsed = () => {
-        setCollapsed(!collapsed);
+        props.changeCollapsed()
     };
-    const [collapsed, setCollapsed] = useState(false);
     return <Header
         className="site-layout-background"
         style={{
             padding: "0px 16px"
         }}
     >
-        {collapsed ? <MenuUnfoldOutlined onClick={ChangeCollapsed}/> : <MenuFoldOutlined onClick={ChangeCollapsed}/>}
+        {props.isCollapsed ? <MenuUnfoldOutlined onClick={ChangeCollapsed}/> :
+            <MenuFoldOutlined onClick={ChangeCollapsed}/>}
         <div style={{float: "right"}}>
             <span>
                 歡迎 <span style={{color: "#1890ff"}}>{username}</span>回來
@@ -55,6 +54,10 @@ const mapStateToProps = ({CollapsedReducer: {isCollapsed}}) => {
     }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    changeCollapsed: () => ({
+        type: "change_collapsed"
+    })
+}
 
-export default connect(mapStateToProps)(TopHeader)
+export default connect(mapStateToProps, mapDispatchToProps)(TopHeader)
