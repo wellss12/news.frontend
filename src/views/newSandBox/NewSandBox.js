@@ -2,12 +2,13 @@
 import SideMenu from "../../components/newSandBox/SideMenu";
 import TopHeader from "../../components/newSandBox/TopHeader";
 import {Outlet} from "react-router-dom";
-import {Layout} from 'antd';
+import {Layout, Spin} from 'antd';
 import "./NewSandBox.css"
+import {connect} from "react-redux";
 
 const {Content} = Layout;
 
-export function NewSandBox() {
+function NewSandBox(props) {
     return <Layout>
         <SideMenu></SideMenu>
         <Layout className="site-layout">
@@ -18,11 +19,18 @@ export function NewSandBox() {
                     margin: '24px 16px',
                     padding: 24,
                     minHeight: 280,
-                    overflow:"auto"
+                    overflow: "auto"
                 }}
             >
-                <Outlet/>
+                <Spin size="large" spinning={props.isLoading}>
+                    <Outlet/>
+                </Spin>
             </Content>
         </Layout>
     </Layout>
 }
+
+const mapStateToProps = ({LoadingReducer: {isLoading}}) => ({
+    isLoading
+})
+export default connect(mapStateToProps)(NewSandBox)

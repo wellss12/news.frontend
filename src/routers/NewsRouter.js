@@ -1,7 +1,7 @@
 ﻿import {useRoutes} from "react-router-dom";
 import React, {useEffect, useState} from 'react';
 import {Login} from "../views/login/Login";
-import {NewSandBox} from "../views/newSandBox/NewSandBox";
+import NewSandBox from "../views/newSandBox/NewSandBox";
 import Redirect from "../components/Redirect";
 import {Home} from "../views/newSandBox/home/Home";
 import {RightList} from "../views/newSandBox/right-manage/RightList";
@@ -36,7 +36,7 @@ const routersMap = {
     "/publish-manage/sunset": <Sunset/>,
 }
 
-export default function IndexRouter(props) {
+export default function NewsRouter(props) {
     const [permissions, setPermissions] = useState([]);
     useEffect(() => {
         Promise.all([
