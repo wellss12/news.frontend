@@ -9,7 +9,7 @@ export default function Audit(props) {
         axios(`/news?auditState=1&_expand=category`).then(res => {
             setNewsByRoleType(res.data)
         })
-    });
+    }, []);
     const setNewsByRoleType = newsListFromApi => {
         const {role: {roleType}, region} = JSON.parse(localStorage.getItem("token"));
         const roleTypeMap = {
