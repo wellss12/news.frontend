@@ -19,6 +19,8 @@ import Sunset from "../views/newSandBox/publish-manage/Sunset";
 import axios from "axios";
 import NewsPreview from "../views/newSandBox/news-manage/NewsPreview";
 import NewsUpdate from "../views/newSandBox/news-manage/NewsUpdate";
+import News from "../views/news/News";
+import NewsDetail from "../views/news/NewsDetail";
 
 const routersMap = {
     "/home": <Home/>,
@@ -125,6 +127,15 @@ export default function NewsRouter(props) {
             path: "/login",
             element: <Login></Login>
         },
+        {
+            path:"/news",
+            element:<News></News>,
+        },
+        {
+            path:"/news/detail/:id",
+            element:<NewsDetail></NewsDetail>,
+        },
+        
     ])
 }
 
