@@ -1,6 +1,6 @@
 ﻿import React from 'react';
-import NewsPublish from "../../components/publish-manage/NewsPublish";
-import useNews from "../../components/publish-manage/useNews";
+import NewsPublish from "../../../components/publish-manage/NewsPublish";
+import useNews from "../../../components/publish-manage/useNews";
 import {Button} from "antd";
 
 export default function Published() {

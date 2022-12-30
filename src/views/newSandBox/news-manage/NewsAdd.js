@@ -2,7 +2,7 @@
 import {Button, Form, Input, Select, PageHeader, Steps, message, notification} from "antd";
 import style from "./News.module.css"
 import axios from "axios";
-import NewsEditor from "../../components/news-manage/NewsEditor";
+import NewsEditor from "../../../components/news-manage/NewsEditor";
 import {useNavigate} from "react-router-dom";
 
 const {Option} = Select;

@@ -43,7 +43,7 @@ export function Home() {
             }
 
             setPieChartData(pieChartData)
-        }, [])
+        })
 
         return () => {
             window.onresize = null;
@@ -52,10 +52,10 @@ export function Home() {
 
     const barChartRef = useRef();
     const renderBarChart = (obj) => {
-        var myChart = echarts.init(barChartRef.current);
+        let myChart = echarts.init(barChartRef.current);
 
         // 指定圖表的配置項和數據
-        var option = {
+        let option = {
             title: {
                 text: '新聞分類圖'
             },
@@ -99,8 +99,8 @@ export function Home() {
         } else {
             myChart = pieChart;
         }
-        
-        var option;
+
+        let option;
         option = {
             title: {
                 text: '當前用戶新聞分類圖示',

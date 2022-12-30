@@ -8,17 +8,17 @@ import {RightList} from "../views/newSandBox/right-manage/RightList";
 import {RoleList} from "../views/newSandBox/right-manage/RoleList";
 import {UserList} from "../views/newSandBox/user-manage/UserList";
 import {NoPermission} from "../views/newSandBox/noPermission/NoPermission";
-import NewsAdd from "../views/news-manage/NewsAdd";
-import NewsDraft from "../views/news-manage/NewsDraft";
-import NewsCategory from "../views/news-manage/NewsCategory";
-import Audit from "../views/audit-manage/Audit";
-import AuditList from "../views/audit-manage/AuditList";
-import UnPublished from "../views/publish-manage/UnPublished";
-import Published from "../views/publish-manage/Published";
-import Sunset from "../views/publish-manage/Sunset";
+import NewsAdd from "../views/newSandBox/news-manage/NewsAdd";
+import NewsDraft from "../views/newSandBox/news-manage/NewsDraft";
+import NewsCategory from "../views/newSandBox/news-manage/NewsCategory";
+import Audit from "../views/newSandBox/audit-manage/Audit";
+import AuditList from "../views/newSandBox/audit-manage/AuditList";
+import UnPublished from "../views/newSandBox/publish-manage/UnPublished";
+import Published from "../views/newSandBox/publish-manage/Published";
+import Sunset from "../views/newSandBox/publish-manage/Sunset";
 import axios from "axios";
-import NewsPreview from "../views/news-manage/NewsPreview";
-import NewsUpdate from "../views/news-manage/NewsUpdate";
+import NewsPreview from "../views/newSandBox/news-manage/NewsPreview";
+import NewsUpdate from "../views/newSandBox/news-manage/NewsUpdate";
 
 const routersMap = {
     "/home": <Home/>,
