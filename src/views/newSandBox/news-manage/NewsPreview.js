@@ -48,7 +48,7 @@ export default function NewsPreview(props) {
                         {moment(newsInfo.createTitme).format("yyyy/MM/DD HH:mm:ss")}
                     </Descriptions.Item>
                     <Descriptions.Item label="發佈時間">
-                        {newsInfo.publishTime ? newsInfo.publishTime : '-'}
+                        {newsInfo.publishTime ? moment(newsInfo.publishTime).format("yyyy/MM/DD HH:mm:ss") : '-'}
                     </Descriptions.Item>
                     <Descriptions.Item label="區域">{newsInfo.region}</Descriptions.Item>
                     <Descriptions.Item label="審核狀態" contentStyle={{color: stateColorMap[newsInfo.auditState]}}>
